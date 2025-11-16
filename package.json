@@ -1,0 +1,49 @@
+{
+  "name": "mcp-template",
+  "module": "app.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bun run dev:stop && NODE_ENV=development bun run src/app.ts",
+    "dev:stop": "lsof -ti:3000 | xargs kill -9",
+    "lint": "eslint . --max-warnings=0",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"**/*.{ts,tsx,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,json,md}\"",
+    "test": "bun test",
+    "test:watch": "bun test --watch",
+    "test:coverage": "bun test --coverage",
+    "docker:build": "docker build -t mcp-template .",
+    "docker:up": "docker-compose up",
+    "docker:up:detached": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "docker:rebuild": "docker-compose up --build",
+    "docker:rebuild:detached": "docker-compose up --build -d",
+    "docker:clean": "docker-compose down -v && docker rmi mcp-template || true",
+    "docker:ps": "docker-compose ps",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@typescript-eslint/eslint-plugin": "^8.46.4",
+    "@typescript-eslint/parser": "^8.46.4",
+    "eslint": "^9.39.1",
+    "eslint-plugin-neverthrow": "^1.1.4",
+    "husky": "^9.1.7",
+    "prettier": "^3.6.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@hono/mcp": "^0.1.5",
+    "@hono/zod-validator": "^0.7.4",
+    "@modelcontextprotocol/sdk": "^1.22.0",
+    "hono": "^4.10.6",
+    "neverthrow": "^8.2.0",
+    "ui7": "^0.2.3",
+    "zod": "^3.23.8",
+    "zod-to-json-schema": "^3.24.1"
+  }
+}

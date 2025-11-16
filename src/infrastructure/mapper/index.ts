@@ -1,0 +1,1 @@
+export { toRegisteredUsers } from "./UserMapper";

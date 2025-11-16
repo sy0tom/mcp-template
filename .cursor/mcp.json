@@ -1,0 +1,26 @@
+{
+  "mcpServers": {
+    "serena": {
+      "command": "docker",
+      "args": [
+        "run",
+        "--rm",
+        "-i",
+        "--network",
+        "host",
+        "-v",
+        "${workspaceFolder}:/workspaces/projects",
+        "ghcr.io/oraios/serena:latest",
+        "serena",
+        "start-mcp-server",
+        "--transport",
+        "stdio",
+        "--enable-web-dashboard=false"
+      ]
+    },
+    "mcp-template": {
+      "url": "http://localhost:3000/mcp",
+      "type": "streamable-http"
+    }
+  }
+}

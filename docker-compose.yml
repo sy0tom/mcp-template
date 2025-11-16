@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  mcp-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - LOG_LEVEL=info
+    volumes:
+      - ./src:/app/src
+      - ./openapi:/app/openapi
+    restart: unless-stopped
+
